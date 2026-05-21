@@ -13,7 +13,13 @@
     "noEmit": false,
     "composite": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@silentsiren/config": ["packages/config/src/index.ts"],
+      "@silentsiren/logger": ["packages/logger/src/index.ts"],
+      "@silentsiren/shared-types": ["packages/shared-types/src/index.ts"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "src/tests/**/*"]
