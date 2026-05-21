@@ -1,7 +1,8 @@
-import { Router, Request, Response } from 'express';
-import { redisService } from '../services/redis.service';
-import { databaseService } from '../services/database.service';
 import { logger } from '@silentsiren/logger';
+import { Router, Request, Response } from 'express';
+
+import { databaseService } from '../services/database.service';
+import { redisService } from '../services/redis.service';
 
 const router = Router();
 

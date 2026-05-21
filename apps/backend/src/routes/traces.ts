@@ -1,9 +1,11 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
-import { createLogger } from '@silentsiren/logger';
-import { antigravityTraceLogger } from '../services/antigravity/traceLogger';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import { join } from 'path';
+
+import { createLogger } from '@silentsiren/logger';
+import { Router, Response } from 'express';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
+import { antigravityTraceLogger } from '../services/antigravity/traceLogger';
 
 const router = Router();
 const logger = createLogger('trace-routes');

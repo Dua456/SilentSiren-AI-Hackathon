@@ -45,7 +45,8 @@ export default function TracesPage() {
   const fetchTraces = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3001/api/traces?limit=20', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/traces?limit=20`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -68,7 +69,8 @@ export default function TracesPage() {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3001/api/traces/stats', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/traces/stats`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

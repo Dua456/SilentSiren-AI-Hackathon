@@ -1,26 +1,27 @@
 import { Router } from 'express';
-import emergencyRoutes from './emergency';
-import authRoutes from './auth';
-import userRoutes from './user';
+
+import abuseRoutes from './abuse';
+import agentLogsRoutes from './agentLogs';
 import aiRoutes from './ai';
-import dispatchRoutes from './dispatch';
-import validatorRoutes from './validator';
-import healthRoutes from './health';
-import workflowRoutes from './workflow';
+import auditRoutes from './audit';
+import authRoutes from './auth';
+import contactsNeonRoutes from './contactsNeon';
 import crisisRoutes from './crisis';
+import dispatchRoutes from './dispatch';
+import emergencyRoutes from './emergency';
 import fcmRoutes from './fcm';
+import healthRoutes from './health';
+import userRoutes from './user';
+import validatorRoutes from './validator';
+import voiceThreatRoutes from './voiceThreat';
+import whatsappRoutes from './whatsapp';
+import workflowRoutes from './workflow';
 import emergencyContactsRoutes from './emergencyContacts';
 import emergencyContactsSimpleRoutes from './emergencyContactsSimple';
 import tracesRoutes from './traces';
 import locationRoutes from './location';
-import whatsappRoutes from './whatsapp';
-import auditRoutes from './audit';
-import abuseRoutes from './abuse';
-import voiceThreatRoutes from './voiceThreat';
 import emergencySMSRoutes from './emergencySMS';
-import agentLogsRoutes from './agentLogs';
 import neonDBRoutes from './neonDB';
-import contactsNeonRoutes from './contactsNeon';
 
 const router = Router();
 

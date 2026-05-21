@@ -1,6 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import { antigravityTraceLogger } from '../services/antigravity/traceLogger';
 import { createLogger } from '@silentsiren/logger';
+import { Request, Response, NextFunction } from 'express';
+
+import { antigravityTraceLogger } from '../services/antigravity/traceLogger';
 
 const logger = createLogger('trace-middleware');
 

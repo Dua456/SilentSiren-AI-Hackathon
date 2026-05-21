@@ -1,10 +1,11 @@
-import { redisService } from './redis.service';
 import { logger } from '@silentsiren/logger';
 import {
   EmergencyIncident,
   ValidationResult,
   CommunityValidatorConfig,
 } from '@silentsiren/shared-types';
+
+import { redisService } from './redis.service';
 
 const DEFAULT_CONFIG: CommunityValidatorConfig = {
   radiusMeters: 500, // 500 meters

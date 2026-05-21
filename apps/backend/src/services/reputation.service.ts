@@ -1,6 +1,7 @@
-import { redisService } from './redis.service';
 import { logger } from '@silentsiren/logger';
 import { UserReputation, DeviceFingerprint } from '@silentsiren/shared-types';
+
+import { redisService } from './redis.service';
 
 interface AbuseCheckResult {
   isAllowed: boolean;

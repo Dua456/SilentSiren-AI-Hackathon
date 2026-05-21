@@ -1,8 +1,9 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
-import { z } from 'zod';
+import { Router, Response } from 'express';
 import * as admin from 'firebase-admin';
+import { z } from 'zod';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 const logger = createLogger('location-routes');

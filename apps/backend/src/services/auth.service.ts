@@ -1,5 +1,6 @@
-import jwt from 'jsonwebtoken';
 import { logger } from '@silentsiren/logger';
+import jwt from 'jsonwebtoken';
+
 import { redisService } from './redis.service';
 
 interface TokenPayload {

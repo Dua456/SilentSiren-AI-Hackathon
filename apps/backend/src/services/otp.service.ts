@@ -1,6 +1,7 @@
-import { redisService } from './redis.service';
-import { encryptionService } from './encryption.service';
 import { logger } from '@silentsiren/logger';
+
+import { encryptionService } from './encryption.service';
+import { redisService } from './redis.service';
 
 interface OTPResult {
   success: boolean;

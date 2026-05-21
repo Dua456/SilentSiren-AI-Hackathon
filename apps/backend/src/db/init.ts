@@ -1,7 +1,9 @@
-import { databaseService } from '../services/database.service';
-import { createLogger } from '@silentsiren/logger';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+
+import { createLogger } from '@silentsiren/logger';
+
+import { databaseService } from '../services/database.service';
 
 const logger = createLogger('db-init');
 

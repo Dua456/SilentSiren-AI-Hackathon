@@ -1,18 +1,19 @@
 import 'dotenv/config';
-import express, { Application, Request, Response, NextFunction } from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import compression from 'compression';
 import { config } from '@silentsiren/config';
 import { createLogger } from '@silentsiren/logger';
+import compression from 'compression';
+import cors from 'cors';
+import express, { Application, Request, Response, NextFunction } from 'express';
+import helmet from 'helmet';
+
+import { initializeDatabase } from './db/init';
 import { errorHandler } from './middleware/errorHandler';
+import { rateLimiter } from './middleware/rateLimiter';
 import { requestLogger } from './middleware/requestLogger';
 import { securityMiddleware } from './middleware/security';
-import { rateLimiter } from './middleware/rateLimiter';
 import apiRoutes from './routes';
-import { redisService } from './services/redis.service';
 import { databaseService } from './services/database.service';
-import { initializeDatabase } from './db/init';
+import { redisService } from './services/redis.service';
 
 const logger = createLogger('backend');
 

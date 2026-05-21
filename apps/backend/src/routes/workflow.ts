@@ -1,6 +1,7 @@
-import { Router, Request, Response } from 'express';
-import { orchestrator } from '../services/orchestration/workflow';
 import { createLogger } from '@silentsiren/logger';
+import { Router, Request, Response } from 'express';
+
+import { orchestrator } from '../services/orchestration/workflow';
 
 const router = Router();
 const logger = createLogger('workflow-route');

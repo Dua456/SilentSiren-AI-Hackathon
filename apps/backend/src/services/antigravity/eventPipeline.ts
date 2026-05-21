@@ -1,3 +1,5 @@
+import { createLogger } from '@silentsiren/logger';
+
 import {
   antigravityTrace,
   EmergencyContext,
@@ -5,7 +7,6 @@ import {
   SignalFusionResult,
 } from './antigravityTrace';
 import { emergencyClassifier } from './emergencyClassifier';
-import { createLogger } from '@silentsiren/logger';
 
 const logger = createLogger('event-pipeline');
 

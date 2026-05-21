@@ -1,9 +1,10 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response } from 'express';
+import { z } from 'zod';
+
 import { authenticate, AuthRequest } from '../middleware/auth';
 import { strictRateLimiter } from '../middleware/rateLimiter';
-import { createLogger } from '@silentsiren/logger';
 import { freeSMSService, EmergencyContact } from '../services/freeSMS.service';
-import { z } from 'zod';
 
 const router = Router();
 const logger = createLogger('emergency-sms-routes');

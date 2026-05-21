@@ -28,7 +28,8 @@ export default function SimpleContactsPage() {
 
   const loadContacts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/contacts-simple/list');
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/contacts-simple/list`);
       if (response.ok) {
         const data = await response.json();
         setContacts(data.contacts || []);
@@ -44,7 +45,8 @@ export default function SimpleContactsPage() {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/contacts-simple/add', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/contacts-simple/add`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -75,7 +77,8 @@ export default function SimpleContactsPage() {
     if (!confirm('Delete this contact?')) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/contacts-simple/delete/${id}`, {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API_URL}/api/contacts-simple/delete/${id}`, {
         method: 'DELETE',
       });
 

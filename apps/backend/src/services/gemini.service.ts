@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { config } from '@silentsiren/config';
 import { createLogger } from '@silentsiren/logger';
 import { AIAnalysisResult, ThreatLevel } from '@silentsiren/shared-types';
+
 import { AUDIO_ANALYSIS_PROMPT } from './antigravity/prompts';
 
 const logger = createLogger('gemini-service');

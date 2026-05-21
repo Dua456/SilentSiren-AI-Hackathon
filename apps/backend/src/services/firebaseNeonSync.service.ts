@@ -1,6 +1,7 @@
 import { createLogger } from '@silentsiren/logger';
-import { databaseService } from './database.service';
 import admin from 'firebase-admin';
+
+import { databaseService } from './database.service';
 
 const logger = createLogger('firebase-neon-sync');
 

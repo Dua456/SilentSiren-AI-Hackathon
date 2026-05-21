@@ -1,9 +1,10 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response } from 'express';
+import { z } from 'zod';
+
 import { AuthRequest } from '../middleware/auth';
 import { optionalAuthenticate } from '../middleware/optionalAuth';
-import { createLogger } from '@silentsiren/logger';
 import { databaseService } from '../services/database.service';
-import { z } from 'zod';
 
 const router = Router();
 const logger = createLogger('emergency-contact-simple-routes');

@@ -1,9 +1,10 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response } from 'express';
+import { z } from 'zod';
+
 import { authenticate, AuthRequest } from '../middleware/auth';
 import { strictRateLimiter } from '../middleware/rateLimiter';
-import { createLogger } from '@silentsiren/logger';
 import { emergencyEventRepository } from '../repositories/emergency.repository';
-import { z } from 'zod';
 
 const router = Router();
 const logger = createLogger('emergency-routes');
@@ -53,7 +54,7 @@ router.post(
       const { antigravityTraceLogger } = await import('../services/antigravity/traceLogger');
 
       traceId = antigravityTrace.startEmergencyTrace({
-        userId: req.userId!,
+        userId: req.userId,
         sessionId: req.headers['x-session-id'] as string,
         eventType: data.eventType,
         location:
@@ -77,7 +78,7 @@ router.post(
 
       // Create emergency event in database
       const event = await emergencyEventRepository.create({
-        user_id: req.userId!,
+        user_id: req.userId,
         event_type: data.eventType,
         threat_level: data.threatLevel,
         latitude: data.latitude,
@@ -225,7 +226,7 @@ router.post(
 
       // Get emergency contacts based on threat level
       const contacts = await emergencyContactRepository.getContactsForThreatLevel(
-        req.userId!,
+        req.userId,
         data.threatLevel
       );
 
@@ -242,9 +243,9 @@ router.post(
       // Collect FCM tokens from contacts
       const fcmTokens = Array.from(
         new Set([
-          ...(contacts.sms.map((c) => c.fcm_token).filter(Boolean) as string[]),
-          ...(contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean) as string[]),
-          ...(contacts.call.map((c) => c.fcm_token).filter(Boolean) as string[]),
+          ...contacts.sms.map((c) => c.fcm_token).filter(Boolean),
+          ...contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean),
+          ...contacts.call.map((c) => c.fcm_token).filter(Boolean),
         ])
       );
 
@@ -491,7 +492,7 @@ router.post('/cancel/:eventId', authenticate, async (req: AuthRequest, res: Resp
 
 router.get('/history', authenticate, async (req: AuthRequest, res: Response) => {
   try {
-    const events = await emergencyEventRepository.findByUserId(req.userId!, 50);
+    const events = await emergencyEventRepository.findByUserId(req.userId, 50);
 
     res.json({
       success: true,

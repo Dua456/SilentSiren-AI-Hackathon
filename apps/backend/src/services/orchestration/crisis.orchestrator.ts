@@ -1,3 +1,5 @@
+import { createLogger } from '@silentsiren/logger';
+
 import { LoggingReasoningAgent, AgentContext } from './agents';
 import {
   SignalFusionAgent,
@@ -10,7 +12,6 @@ import {
   CrisisSignal,
   CrisisType,
 } from './crisis.agents';
-import { createLogger } from '@silentsiren/logger';
 
 const logger = createLogger('crisis-orchestrator');
 

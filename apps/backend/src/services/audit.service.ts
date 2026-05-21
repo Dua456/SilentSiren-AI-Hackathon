@@ -1,5 +1,6 @@
-import { redisService } from './redis.service';
 import { logger } from '@silentsiren/logger';
+
+import { redisService } from './redis.service';
 
 export type AuditAction =
   | 'user.login'

@@ -1,5 +1,6 @@
-import { databaseService } from '../services/database.service';
 import { createLogger } from '@silentsiren/logger';
+
+import { databaseService } from '../services/database.service';
 
 const logger = createLogger('emergency-repository');
 

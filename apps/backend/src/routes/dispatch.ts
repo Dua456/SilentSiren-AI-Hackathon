@@ -1,10 +1,11 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response, Request } from 'express';
+import { z } from 'zod';
+
 import { authenticate, AuthRequest } from '../middleware/auth';
 import { strictRateLimiter } from '../middleware/rateLimiter';
-import { fcmService } from '../services/fcm.service';
 import { emergencyContactRepository } from '../repositories/emergencyContact.repository';
-import { createLogger } from '@silentsiren/logger';
-import { z } from 'zod';
+import { fcmService } from '../services/fcm.service';
 
 const router = Router();
 const logger = createLogger('dispatch-routes');
@@ -53,15 +54,15 @@ router.post('/alert', authenticate, strictRateLimiter, async (req: AuthRequest, 
 
     // Get emergency contacts and extract FCM tokens
     const contacts = await emergencyContactRepository.getContactsForThreatLevel(
-      req.userId!,
+      req.userId,
       threatLevel
     );
 
     const fcmTokens = Array.from(
       new Set([
-        ...(contacts.sms.map((c) => c.fcm_token).filter(Boolean) as string[]),
-        ...(contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean) as string[]),
-        ...(contacts.call.map((c) => c.fcm_token).filter(Boolean) as string[]),
+        ...contacts.sms.map((c) => c.fcm_token).filter(Boolean),
+        ...contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean),
+        ...contacts.call.map((c) => c.fcm_token).filter(Boolean),
       ])
     );
 

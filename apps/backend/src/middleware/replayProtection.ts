@@ -1,7 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
-import { redisService } from '../services/redis.service';
-import { encryptionService } from '../services/encryption.service';
 import { logger } from '@silentsiren/logger';
+import { Request, Response, NextFunction } from 'express';
+
+import { encryptionService } from '../services/encryption.service';
+import { redisService } from '../services/redis.service';
 
 interface RequestSignature {
   timestamp: number;

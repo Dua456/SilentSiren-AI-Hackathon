@@ -1,10 +1,11 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
-import { whatsAppService } from '../services/whatsapp.service';
+import { Router, Response } from 'express';
+import { z } from 'zod';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
 import { emergencyContactRepository } from '../repositories/emergencyContact.repository';
 import { auditService } from '../services/audit.service';
-import { z } from 'zod';
+import { whatsAppService } from '../services/whatsapp.service';
 
 const router = Router();
 const logger = createLogger('whatsapp-routes');
@@ -199,7 +200,7 @@ router.post('/emergency-alert', authenticate, async (req: AuthRequest, res: Resp
 
     // Get user's emergency contacts with WhatsApp enabled
     const contactsData = await emergencyContactRepository.getContactsForThreatLevel(
-      req.userId!,
+      req.userId,
       alertData.threatLevel
     );
 

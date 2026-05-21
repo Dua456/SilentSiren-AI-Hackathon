@@ -1,6 +1,6 @@
-import { Pool, PoolClient, QueryResult } from 'pg';
 import { config } from '@silentsiren/config';
 import { createLogger } from '@silentsiren/logger';
+import { Pool, PoolClient, QueryResult } from 'pg';
 
 const logger = createLogger('database');
 

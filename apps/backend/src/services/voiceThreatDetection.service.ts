@@ -1,10 +1,11 @@
 import { createLogger } from '@silentsiren/logger';
-import { geminiService } from './gemini.service';
-import { whatsAppService } from './whatsapp.service';
+import type { AIAnalysisResult } from '@silentsiren/shared-types';
+
 import { emergencyClassifier } from './antigravity/emergencyClassifier';
 import { audioStorageService } from './audioStorage.service';
 import { freeSMSService } from './freeSMS.service';
-import type { AIAnalysisResult } from '@silentsiren/shared-types';
+import { geminiService } from './gemini.service';
+import { whatsAppService } from './whatsapp.service';
 
 const logger = createLogger('voice-threat-detection');
 

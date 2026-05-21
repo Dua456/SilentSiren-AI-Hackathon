@@ -1,7 +1,8 @@
-import { Router, Response } from 'express';
-import { optionalAuthenticate, AuthRequest } from '../middleware/optionalAuth';
-import { Pool } from 'pg';
 import { createLogger } from '@silentsiren/logger';
+import { Router, Response } from 'express';
+import { Pool } from 'pg';
+
+import { optionalAuthenticate, AuthRequest } from '../middleware/optionalAuth';
 
 const router = Router();
 const logger = createLogger('contacts-neon');

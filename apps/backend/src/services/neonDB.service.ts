@@ -1,5 +1,5 @@
-import { Pool } from 'pg';
 import { createLogger } from '@silentsiren/logger';
+import { Pool } from 'pg';
 
 const logger = createLogger('neon-db-service');
 

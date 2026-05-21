@@ -1,6 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import { authService } from '../services/auth.service';
 import { logger } from '@silentsiren/logger';
+import { Request, Response, NextFunction } from 'express';
+
+import { authService } from '../services/auth.service';
 
 // Extend Express Request type to include user
 declare global {

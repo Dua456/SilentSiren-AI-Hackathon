@@ -1,9 +1,10 @@
-import { Router, Request, Response } from 'express';
-import { communityValidatorService } from '../services/communityValidator.service';
-import { reputationService } from '../services/reputation.service';
 import { logger } from '@silentsiren/logger';
 import { EmergencyIncident } from '@silentsiren/shared-types';
+import { Router, Request, Response } from 'express';
 import { z } from 'zod';
+
+import { communityValidatorService } from '../services/communityValidator.service';
+import { reputationService } from '../services/reputation.service';
 
 const router = Router();
 

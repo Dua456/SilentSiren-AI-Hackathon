@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
 import { createLogger } from '@silentsiren/logger';
+import nodemailer from 'nodemailer';
 
 const logger = createLogger('free-sms-service');
 

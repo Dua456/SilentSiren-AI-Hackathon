@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import { Permission, ROLE_PERMISSIONS } from '@silentsiren/shared-types';
 import { logger } from '@silentsiren/logger';
+import { Permission, ROLE_PERMISSIONS } from '@silentsiren/shared-types';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * Middleware to check if user has required permission

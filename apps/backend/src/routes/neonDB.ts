@@ -1,7 +1,8 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response } from 'express';
+
 import { optionalAuthenticate, AuthRequest } from '../middleware/optionalAuth';
 import { neonDBService } from '../services/neonDB.service';
-import { createLogger } from '@silentsiren/logger';
 
 const router = Router();
 const logger = createLogger('neon-db-routes');

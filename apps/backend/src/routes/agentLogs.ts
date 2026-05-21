@@ -1,5 +1,5 @@
-import { Router, Request, Response } from 'express';
 import { createLogger } from '@silentsiren/logger';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 const logger = createLogger('agent-logs');

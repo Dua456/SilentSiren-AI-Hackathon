@@ -1,6 +1,6 @@
+import { config } from '@silentsiren/config';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { config } from '@silentsiren/config';
 
 export interface AuthRequest extends Request {
   userId?: string;

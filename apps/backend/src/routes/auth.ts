@@ -1,9 +1,10 @@
-import { Router, Request, Response } from 'express';
-import { createLogger } from '@silentsiren/logger';
-import { userRepository } from '../repositories/user.repository';
-import { z } from 'zod';
-import jwt from 'jsonwebtoken';
 import { config } from '@silentsiren/config';
+import { createLogger } from '@silentsiren/logger';
+import { Router, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import { z } from 'zod';
+
+import { userRepository } from '../repositories/user.repository';
 
 const router = Router();
 const logger = createLogger('auth-routes');

@@ -1,5 +1,6 @@
-import { databaseService } from '../services/database.service';
 import { createLogger } from '@silentsiren/logger';
+
+import { databaseService } from '../services/database.service';
 
 const logger = createLogger('device-token-repository');
 
@@ -90,7 +91,7 @@ class DeviceTokenRepository {
         if (!tokenMap.has(row.user_id)) {
           tokenMap.set(row.user_id, []);
         }
-        tokenMap.get(row.user_id)!.push(row.token);
+        tokenMap.get(row.user_id).push(row.token);
       });
 
       return tokenMap;

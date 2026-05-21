@@ -1,6 +1,6 @@
-import * as admin from 'firebase-admin';
 import { config } from '@silentsiren/config';
 import { createLogger } from '@silentsiren/logger';
+import * as admin from 'firebase-admin';
 
 const logger = createLogger('fcm-service');
 

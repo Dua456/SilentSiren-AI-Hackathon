@@ -1,8 +1,9 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
-import { auditService } from '../services/audit.service';
+import { Router, Response } from 'express';
 import { z } from 'zod';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
+import { auditService } from '../services/audit.service';
 
 const router = Router();
 const logger = createLogger('audit-routes');

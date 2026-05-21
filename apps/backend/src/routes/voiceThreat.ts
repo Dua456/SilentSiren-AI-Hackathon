@@ -1,11 +1,12 @@
+import { createLogger } from '@silentsiren/logger';
 import { Router, Response } from 'express';
+import multer from 'multer';
+import { z } from 'zod';
+
 import { authenticate, AuthRequest } from '../middleware/auth';
 import { optionalAuthenticate } from '../middleware/optionalAuth';
 import { strictRateLimiter } from '../middleware/rateLimiter';
-import { createLogger } from '@silentsiren/logger';
 import { voiceThreatDetectionService } from '../services/voiceThreatDetection.service';
-import { z } from 'zod';
-import multer from 'multer';
 
 const router = Router();
 const logger = createLogger('voice-threat-routes');
@@ -59,7 +60,7 @@ router.post(
 
       const threatResult = await voiceThreatDetectionService.analyzeVoiceForThreat(
         req.file.buffer,
-        req.userId!
+        req.userId
       );
 
       logger.info(
@@ -109,7 +110,7 @@ router.get('/test-gemini', authenticate, async (req: AuthRequest, res: Response)
     // Create a simple test audio buffer
     const testAudio = Buffer.from('test-audio-data');
 
-    const result = await voiceThreatDetectionService.analyzeVoiceForThreat(testAudio, req.userId!);
+    const result = await voiceThreatDetectionService.analyzeVoiceForThreat(testAudio, req.userId);
 
     logger.info({ userId: req.userId, result }, '✅ Gemini AI test successful');
 

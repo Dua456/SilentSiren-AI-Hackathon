@@ -1,11 +1,13 @@
-import { createLogger } from '@silentsiren/logger';
+import crypto from 'crypto';
+
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { config } from '@silentsiren/config';
-import { fcmService } from '../fcm.service';
-import { emergencyContactRepository } from '../../repositories/emergencyContact.repository';
-import { geocodingService } from '../geocoding.service';
-import crypto from 'crypto';
+import { createLogger } from '@silentsiren/logger';
 import axios from 'axios';
+
+import { emergencyContactRepository } from '../../repositories/emergencyContact.repository';
+import { fcmService } from '../fcm.service';
+import { geocodingService } from '../geocoding.service';
 
 const logger = createLogger('agents');
 
@@ -204,7 +206,7 @@ export class DispatchAgent {
     const alertPayload = {
       eventId,
       userId: context.userId,
-      threatLevel: (confidence === 'High' ? 'CRITICAL' : 'HIGH') as 'CRITICAL' | 'HIGH',
+      threatLevel: confidence === 'High' ? 'CRITICAL' : 'HIGH',
       gpsCoordinates: context.location || { latitude: 0, longitude: 0 },
       address: address,
       timestamp: new Date(),
@@ -220,9 +222,9 @@ export class DispatchAgent {
 
       const fcmTokens = Array.from(
         new Set([
-          ...(contacts.sms.map((c) => c.fcm_token).filter(Boolean) as string[]),
-          ...(contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean) as string[]),
-          ...(contacts.call.map((c) => c.fcm_token).filter(Boolean) as string[]),
+          ...contacts.sms.map((c) => c.fcm_token).filter(Boolean),
+          ...contacts.whatsapp.map((c) => c.fcm_token).filter(Boolean),
+          ...contacts.call.map((c) => c.fcm_token).filter(Boolean),
         ])
       );
 

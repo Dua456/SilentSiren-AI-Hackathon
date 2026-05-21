@@ -1,6 +1,7 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
+import { Router, Response } from 'express';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 const logger = createLogger('user-routes');

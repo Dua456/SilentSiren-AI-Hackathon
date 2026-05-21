@@ -1,8 +1,9 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
-import { emergencyContactRepository } from '../repositories/emergencyContact.repository';
+import { Router, Response } from 'express';
 import { z } from 'zod';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
+import { emergencyContactRepository } from '../repositories/emergencyContact.repository';
 
 const router = Router();
 const logger = createLogger('emergency-contact-routes');
@@ -52,7 +53,7 @@ router.post('/', authenticate, async (req: AuthRequest, res: Response) => {
     const data = validation.data;
 
     const contact = await emergencyContactRepository.create({
-      user_id: req.userId!,
+      user_id: req.userId,
       name: data.name,
       phone_number: data.phoneNumber,
       relationship: data.relationship,
@@ -87,7 +88,7 @@ router.post('/', authenticate, async (req: AuthRequest, res: Response) => {
  */
 router.get('/', authenticate, async (req: AuthRequest, res: Response) => {
   try {
-    const contacts = await emergencyContactRepository.findByUserId(req.userId!);
+    const contacts = await emergencyContactRepository.findByUserId(req.userId);
 
     res.json({
       success: true,

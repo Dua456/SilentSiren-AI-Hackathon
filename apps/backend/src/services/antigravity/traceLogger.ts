@@ -1,7 +1,8 @@
-import { createLogger } from '@silentsiren/logger';
+import { randomUUID } from 'crypto';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import { randomUUID } from 'crypto';
+
+import { createLogger } from '@silentsiren/logger';
 import * as admin from 'firebase-admin';
 
 const logger = createLogger('antigravity-trace');

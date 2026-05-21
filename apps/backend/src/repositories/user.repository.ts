@@ -1,6 +1,7 @@
-import { databaseService } from '../services/database.service';
 import { createLogger } from '@silentsiren/logger';
 import bcrypt from 'bcrypt';
+
+import { databaseService } from '../services/database.service';
 
 const logger = createLogger('user-repository');
 

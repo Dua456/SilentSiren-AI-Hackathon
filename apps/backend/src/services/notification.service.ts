@@ -1,8 +1,9 @@
-import { fcmService } from '../services/fcm.service';
+import { createLogger } from '@silentsiren/logger';
+
 import { deviceTokenRepository } from '../repositories/deviceToken.repository';
 import { emergencyEventRepository } from '../repositories/emergency.repository';
 import { userRepository } from '../repositories/user.repository';
-import { createLogger } from '@silentsiren/logger';
+import { fcmService } from '../services/fcm.service';
 
 const logger = createLogger('notification-service');
 

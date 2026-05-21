@@ -1,5 +1,6 @@
-import { antigravityTraceLogger } from './traceLogger';
 import { createLogger } from '@silentsiren/logger';
+
+import { antigravityTraceLogger } from './traceLogger';
 
 const logger = createLogger('antigravity-trace');
 

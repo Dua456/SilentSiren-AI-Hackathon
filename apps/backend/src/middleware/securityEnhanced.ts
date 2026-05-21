@@ -110,7 +110,7 @@ export const sanitizeRequest = (req: Request, res: Response, next: NextFunction)
   if (req.query) {
     for (const key in req.query) {
       if (typeof req.query[key] === 'string') {
-        req.query[key] = sanitizeString(req.query[key] as string);
+        req.query[key] = sanitizeString(req.query[key]);
       }
     }
   }

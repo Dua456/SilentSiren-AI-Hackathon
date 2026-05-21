@@ -1,6 +1,6 @@
-import twilio from 'twilio';
-import axios from 'axios';
 import { createLogger } from '@silentsiren/logger';
+import axios from 'axios';
+import twilio from 'twilio';
 
 const logger = createLogger('twilio-service');
 

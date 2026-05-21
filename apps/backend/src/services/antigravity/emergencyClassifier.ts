@@ -1,4 +1,5 @@
 import { createLogger } from '@silentsiren/logger';
+
 import type { EmergencyType } from './antigravityTrace';
 
 const logger = createLogger('emergency-classifier');

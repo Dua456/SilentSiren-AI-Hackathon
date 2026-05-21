@@ -1,5 +1,5 @@
-import { createClient, RedisClientType } from 'redis';
 import { logger } from '@silentsiren/logger';
+import { createClient, RedisClientType } from 'redis';
 
 class RedisService {
   private client: RedisClientType | null = null;

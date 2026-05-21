@@ -1,9 +1,10 @@
-import { Router, Response } from 'express';
-import { authenticate, AuthRequest } from '../middleware/auth';
 import { createLogger } from '@silentsiren/logger';
-import { fcmService } from '../services/fcm.service';
-import { deviceTokenRepository } from '../repositories/deviceToken.repository';
+import { Router, Response } from 'express';
 import { z } from 'zod';
+
+import { authenticate, AuthRequest } from '../middleware/auth';
+import { deviceTokenRepository } from '../repositories/deviceToken.repository';
+import { fcmService } from '../services/fcm.service';
 
 const router = Router();
 const logger = createLogger('fcm-routes');
@@ -58,7 +59,7 @@ router.post('/save-token', authenticate, async (req: AuthRequest, res: Response)
 
     // Save to database
     const deviceToken = await deviceTokenRepository.create({
-      user_id: req.userId!,
+      user_id: req.userId,
       token,
       device_type: deviceType,
       device_info: deviceInfo,
@@ -119,7 +120,7 @@ router.post('/send-test', authenticate, async (req: AuthRequest, res: Response) 
     logger.info({ userId: req.userId }, 'Sending test notification');
 
     // Get user's device tokens
-    const tokens = await deviceTokenRepository.findActiveTokensByUserId(req.userId!);
+    const tokens = await deviceTokenRepository.findActiveTokensByUserId(req.userId);
 
     if (tokens.length === 0) {
       return res.status(404).json({
@@ -192,7 +193,7 @@ router.delete('/token', authenticate, async (req: AuthRequest, res: Response) =>
 
     logger.info({ userId: req.userId }, 'Removing FCM token');
 
-    await deviceTokenRepository.deactivate(req.userId!, token);
+    await deviceTokenRepository.deactivate(req.userId, token);
 
     res.json({
       success: true,
@@ -219,7 +220,7 @@ router.delete('/token', authenticate, async (req: AuthRequest, res: Response) =>
  */
 router.get('/tokens', authenticate, async (req: AuthRequest, res: Response) => {
   try {
-    const tokens = await deviceTokenRepository.findByUserId(req.userId!);
+    const tokens = await deviceTokenRepository.findByUserId(req.userId);
 
     res.json({
       success: true,

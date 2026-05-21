@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
 import { createLogger } from '@silentsiren/logger';
+import { Request, Response, NextFunction } from 'express';
 
 const logger = createLogger('error-handler');
 
