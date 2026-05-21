@@ -21,6 +21,6 @@
       "@silentsiren/shared-types": ["packages/shared-types/src/index.ts"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "packages/*/src/**/*"],
   "exclude": ["node_modules", "dist", "src/tests/**/*"]
 }

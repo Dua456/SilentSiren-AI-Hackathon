@@ -217,7 +217,7 @@ export class DispatchAgent {
       // Get user's emergency contacts and extract FCM tokens
       const contacts = await emergencyContactRepository.getContactsForThreatLevel(
         context.userId,
-        alertPayload.threatLevel
+        alertPayload.threatLevel as 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'
       );
 
       const fcmTokens = Array.from(
